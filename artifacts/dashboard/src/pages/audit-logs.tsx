@@ -1,0 +1,95 @@
+import { useListAuditLogs } from "@workspace/api-client-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Search, History } from "lucide-react";
+import { format } from "date-fns";
+import { useState } from "react";
+import {
+  Table,
+  Body,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableBody
+} from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
+
+export default function AuditLogs() {
+  const { data: logs, isLoading } = useListAuditLogs();
+  const [search, setSearch] = useState("");
+
+  const filteredLogs = logs?.filter(log => 
+    log.action.toLowerCase().includes(search.toLowerCase()) || 
+    log.operator.toLowerCase().includes(search.toLowerCase()) ||
+    log.target.toLowerCase().includes(search.toLowerCase())
+  ) ?? [];
+
+  return (
+    <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <h1 className="text-3xl font-bold tracking-tight">Security Audit Log</h1>
+        <div className="relative w-full sm:w-72">
+          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Input
+            placeholder="Search events..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="pl-9 font-mono bg-background/50"
+          />
+        </div>
+      </div>
+
+      <Card className="bg-card/50 backdrop-blur border-border/50">
+        <CardContent className="p-0">
+          {isLoading ? (
+            <div className="py-12 text-center text-muted-foreground font-mono animate-pulse">
+              RETRIEVING_AUDIT_TRAIL...
+            </div>
+          ) : filteredLogs.length === 0 ? (
+            <div className="py-12 text-center text-muted-foreground font-mono border border-dashed border-border m-4 rounded-lg">
+              NO_LOGS_FOUND
+            </div>
+          ) : (
+            <div className="rounded-md">
+              <Table>
+                <TableHeader className="bg-muted/50">
+                  <TableRow className="border-border/50">
+                    <TableHead className="font-mono text-xs w-[180px]">TIMESTAMP</TableHead>
+                    <TableHead className="font-mono text-xs">OPERATOR</TableHead>
+                    <TableHead className="font-mono text-xs">ACTION</TableHead>
+                    <TableHead className="font-mono text-xs">TARGET</TableHead>
+                    <TableHead className="font-mono text-xs text-right">DETAILS</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {filteredLogs.map((log, i) => (
+                    <TableRow key={log.id} className={`border-border/50 hover:bg-accent/5 stagger-${Math.min(i + 1, 5)}`}>
+                      <TableCell className="font-mono text-xs text-muted-foreground">
+                        {format(new Date(log.createdAt), 'yyyy-MM-dd HH:mm:ss')}
+                      </TableCell>
+                      <TableCell className="font-medium text-sm">
+                        {log.operator}
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant="outline" className="font-mono text-[10px] border-primary/20 text-primary bg-primary/5">
+                          {log.action.toUpperCase()}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="font-mono text-sm truncate max-w-[200px]" title={log.target}>
+                        {log.target}
+                      </TableCell>
+                      <TableCell className="text-right text-sm text-muted-foreground truncate max-w-[200px]" title={log.detail}>
+                        {log.detail || '-'}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
