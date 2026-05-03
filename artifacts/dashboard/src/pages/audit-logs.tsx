@@ -28,11 +28,11 @@ export default function AuditLogs() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <h1 className="text-3xl font-bold tracking-tight">Security Audit Log</h1>
+        <h1 className="text-3xl font-bold tracking-tight">\u5ba1\u8ba1\u65e5\u5fd7</h1>
         <div className="relative w-full sm:w-72">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search events..."
+            placeholder="\u641c\u7d22\u4e8b\u4ef6..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="pl-9 font-mono bg-background/50"
@@ -44,22 +44,22 @@ export default function AuditLogs() {
         <CardContent className="p-0">
           {isLoading ? (
             <div className="py-12 text-center text-muted-foreground font-mono animate-pulse">
-              RETRIEVING_AUDIT_TRAIL...
+              \u6b63\u5728\u68c0\u7d22\u5ba1\u8ba1\u8bb0\u5f55...
             </div>
           ) : filteredLogs.length === 0 ? (
             <div className="py-12 text-center text-muted-foreground font-mono border border-dashed border-border m-4 rounded-lg">
-              NO_LOGS_FOUND
+              \u672a\u627e\u5230\u65e5\u5fd7
             </div>
           ) : (
             <div className="rounded-md">
               <Table>
                 <TableHeader className="bg-muted/50">
                   <TableRow className="border-border/50">
-                    <TableHead className="font-mono text-xs w-[180px]">TIMESTAMP</TableHead>
-                    <TableHead className="font-mono text-xs">OPERATOR</TableHead>
-                    <TableHead className="font-mono text-xs">ACTION</TableHead>
-                    <TableHead className="font-mono text-xs">TARGET</TableHead>
-                    <TableHead className="font-mono text-xs text-right">DETAILS</TableHead>
+                    <TableHead className="font-mono text-xs w-[180px]">\u65f6\u95f4\u6233</TableHead>
+                    <TableHead className="font-mono text-xs">\u64cd\u4f5c\u4eba</TableHead>
+                    <TableHead className="font-mono text-xs">\u64cd\u4f5c\u7c7b\u578b</TableHead>
+                    <TableHead className="font-mono text-xs">\u76ee\u6807</TableHead>
+                    <TableHead className="font-mono text-xs text-right">\u8be6\u60c5</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>

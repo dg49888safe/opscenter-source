@@ -19,11 +19,11 @@ export default function Agents() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <h1 className="text-3xl font-bold tracking-tight">Agent Directory</h1>
+        <h1 className="text-3xl font-bold tracking-tight">\u7ec8\u7aef\u7ba1\u7406</h1>
         <div className="relative w-full sm:w-72">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search by hostname or IP..."
+            placeholder="\u641c\u7d22\u4e3b\u673a\u540d\u6216 IP..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="pl-9 font-mono bg-background/50"
@@ -35,11 +35,11 @@ export default function Agents() {
         {isLoading ? (
           <div className="col-span-full py-12 text-center text-muted-foreground font-mono">
             <Activity className="w-8 h-8 mx-auto mb-4 animate-spin text-primary" />
-            SCANNING_NETWORK...
+            \u6b63\u5728\u626b\u63cf\u7f51\u7edc...
           </div>
         ) : filteredAgents.length === 0 ? (
           <div className="col-span-full py-12 text-center text-muted-foreground font-mono border border-dashed border-border rounded-lg">
-            NO_AGENTS_MATCHED_QUERY
+            \u672a\u627e\u5230\u5339\u914d\u7684\u7ec8\u7aef
           </div>
         ) : (
           filteredAgents.map((agent, i) => (
@@ -74,9 +74,9 @@ export default function Agents() {
                       {agent.os} {agent.version ? `v${agent.version}` : ''}
                     </div>
                     <div className="pt-2 flex justify-between items-center text-xs">
-                      <span>Seen {formatDistanceToNow(new Date(agent.lastSeen))} ago</span>
+                      <span>{formatDistanceToNow(new Date(agent.lastSeen))}\u524d\u5728\u7ebf</span>
                       <Badge variant="outline" className={agent.status === 'online' ? 'border-green-500/30 text-green-500' : 'border-border text-muted-foreground'}>
-                        {agent.status.toUpperCase()}
+                        {agent.status === 'online' ? '\u5728\u7ebf' : '\u79bb\u7ebf'}
                       </Badge>
                     </div>
                   </div>

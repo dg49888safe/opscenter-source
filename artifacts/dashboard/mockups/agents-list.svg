@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800">
+  <rect width="100%" height="100%" fill="#0f172a" />
+  <rect x="0" y="0" width="200" height="800" fill="#081226" />
+  <text x="20" y="40" fill="#fff" font-size="18" font-family="Arial">OpsCenter</text>
+  <text x="240" y="40" fill="#e6eef8" font-size="18" font-family="Arial">Agents</text>
+
+  <rect x="240" y="70" width="920" height="620" rx="8" fill="#071127" stroke="#1b2938" />
+  <text x="260" y="100" fill="#94a3b8" font-size="14">Agents (total 42)</text>
+
+  <!-- Table header -->
+  <rect x="260" y="120" width="880" height="36" fill="#0b1a2b" />
+  <text x="280" y="145" fill="#a8b7c8" font-size="13">Name</text>
+  <text x="520" y="145" fill="#a8b7c8" font-size="13">IP</text>
+  <text x="680" y="145" fill="#a8b7c8" font-size="13">OS</text>
+  <text x="860" y="145" fill="#a8b7c8" font-size="13">Status</text>
+  <text x="980" y="145" fill="#a8b7c8" font-size="13">Last Seen</text>
+
+  <!-- Rows -->
+  <g fill="#e6eef8" font-size="13">
+    <text x="280" y="180">agent-12</text>
+    <text x="520" y="180">192.168.1.12</text>
+    <text x="680" y="180">linux</text>
+    <text x="860" y="180" fill="#86efac">online</text>
+    <text x="980" y="180">2026-05-03 10:12</text>
+
+    <text x="280" y="210">agent-07</text>
+    <text x="520" y="210">10.0.0.7</text>
+    <text x="680" y="210">windows</text>
+    <text x="860" y="210" fill="#fca5a5">offline</text>
+    <text x="980" y="210">2026-05-01 18:23</text>
+
+    <text x="280" y="240">agent-03</text>
+    <text x="520" y="240">172.16.0.3</text>
+    <text x="680" y="240">darwin</text>
+    <text x="860" y="240" fill="#86efac">online</text>
+    <text x="980" y="240">2026-05-03 09:40</text>
+  </g>
+
+  <rect x="260" y="540" width="200" height="40" rx="6" fill="#0b2233" />
+  <text x="280" y="566" fill="#93c5fd">New Agent</text>
+</svg>

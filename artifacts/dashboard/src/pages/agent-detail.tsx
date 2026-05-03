@@ -48,13 +48,13 @@ export default function AgentDetail() {
   };
 
   const handleDelete = async () => {
-    if (window.confirm("Are you sure you want to unregister this agent? This cannot be undone.")) {
+    if (window.confirm("\u786e\u5b9a\u8981\u6ce8\u9500\u6b64\u7ec8\u7aef\u5417\uff1f\u6b64\u64cd\u4f5c\u4e0d\u53ef\u64a4\u9500\u3002")) {
       try {
         await deleteAgent.mutateAsync({ agentId });
-        toast({ title: "Agent Unregistered" });
+        toast({ title: "\u7ec8\u7aef\u5df2\u6ce8\u9500" });
         setLocation("/agents");
       } catch (error: any) {
-        toast({ title: "Failed to delete", description: error?.message, variant: "destructive" });
+        toast({ title: "\u5220\u9664\u5931\u8d25", description: error?.message, variant: "destructive" });
       }
     }
   };
@@ -63,13 +63,13 @@ export default function AgentDetail() {
     return (
       <div className="flex h-[50vh] items-center justify-center font-mono text-muted-foreground">
         <Activity className="w-6 h-6 animate-spin text-primary mr-3" />
-        ESTABLISHING_CONNECTION...
+        \u6b63\u5728\u5efa\u7acb\u8fde\u63a5...
       </div>
     );
   }
 
   if (!agent) {
-    return <div className="text-destructive font-mono py-12 text-center border border-destructive/20 rounded-lg bg-destructive/5">AGENT_NOT_FOUND</div>;
+    return <div className="text-destructive font-mono py-12 text-center border border-destructive/20 rounded-lg bg-destructive/5">\u672a\u627e\u5230\u7ec8\u7aef</div>;
   }
 
   return (
@@ -87,31 +87,31 @@ export default function AgentDetail() {
           </h1>
         </div>
         <Button variant="destructive" size="sm" onClick={handleDelete} className="font-mono">
-          <Trash2 className="w-4 h-4 mr-2" /> UNREGISTER
+          <Trash2 className="w-4 h-4 mr-2" /> \u6ce8\u9500\u7ec8\u7aef
         </Button>
       </div>
 
       <div className="grid md:grid-cols-4 gap-4">
         <Card className="bg-card/50 border-border/50 md:col-span-1">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-mono text-muted-foreground">SYSTEM_INFO</CardTitle>
+            <CardTitle className="text-sm font-mono text-muted-foreground">\u7cfb\u7edf\u4fe1\u606f</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 font-mono text-sm">
             <div>
-              <div className="flex items-center gap-2 text-muted-foreground mb-1"><Hash className="w-3.5 h-3.5" /> ID</div>
+              <div className="flex items-center gap-2 text-muted-foreground mb-1"><Hash className="w-3.5 h-3.5" /> \u7f16\u53f7</div>
               <div className="truncate text-xs">{agent.id}</div>
             </div>
             <div>
-              <div className="flex items-center gap-2 text-muted-foreground mb-1"><Globe className="w-3.5 h-3.5" /> IP Address</div>
+              <div className="flex items-center gap-2 text-muted-foreground mb-1"><Globe className="w-3.5 h-3.5" /> IP \u5730\u5740</div>
               <div>{agent.ip}</div>
             </div>
             <div>
-              <div className="flex items-center gap-2 text-muted-foreground mb-1"><Cpu className="w-3.5 h-3.5" /> OS</div>
+              <div className="flex items-center gap-2 text-muted-foreground mb-1"><Cpu className="w-3.5 h-3.5" /> \u64cd\u4f5c\u7cfb\u7edf</div>
               <div>{agent.os} {agent.version ? `v${agent.version}` : ''}</div>
             </div>
             <div>
-              <div className="flex items-center gap-2 text-muted-foreground mb-1"><Clock className="w-3.5 h-3.5" /> Last Seen</div>
-              <div>{formatDistanceToNow(new Date(agent.lastSeen))} ago</div>
+              <div className="flex items-center gap-2 text-muted-foreground mb-1"><Clock className="w-3.5 h-3.5" /> \u6700\u540e\u5728\u7ebf</div>
+              <div>{formatDistanceToNow(new Date(agent.lastSeen))}\u524d</div>
             </div>
           </CardContent>
         </Card>
@@ -120,14 +120,14 @@ export default function AgentDetail() {
           <Card className="bg-black border-primary/20 shadow-[0_0_15px_rgba(6,182,212,0.1)] h-[500px] flex flex-col overflow-hidden">
             <CardHeader className="py-3 px-4 border-b border-primary/20 bg-primary/5 flex flex-row items-center gap-2">
               <Terminal className="w-4 h-4 text-primary" />
-              <CardTitle className="text-xs font-mono text-primary tracking-widest">REMOTE_TERMINAL</CardTitle>
+              <CardTitle className="text-xs font-mono text-primary tracking-widest">\u8fdc\u7a0b\u7ec8\u7aef</CardTitle>
             </CardHeader>
             
             <CardContent className="flex-1 p-0 flex flex-col font-mono text-sm overflow-hidden">
               <div className="flex-1 overflow-y-auto p-4 space-y-4">
                 <div className="text-muted-foreground text-xs mb-4">
-                  Welcome to OPS_CENTER secure remote shell.<br/>
-                  Connected to {agent.hostname} ({agent.ip}). Session logged.<br/>
+                  \u6b22\u8fce\u4f7f\u7528\u8fd0\u7ef4\u4e2d\u5fc3\u5b89\u5168\u8fdc\u7a0b\u7ec8\u7aef\u3002<br/>
+                  \u5df2\u8fde\u63a5\u5230 {agent.hostname} ({agent.ip})\u3002\u4f1a\u8bdd\u5df2\u8bb0\u5f55\u3002<br/>
                   ---
                 </div>
 
@@ -138,12 +138,12 @@ export default function AgentDetail() {
                       <span>{cmd.command}</span>
                       {cmd.status === 'running' && <span className="animate-pulse w-2 h-4 bg-primary inline-block ml-1" />}
                     </div>
-                    {cmd.status === 'pending' && <div className="text-muted-foreground/50 text-xs italic">[pending dispatch...]</div>}
+                    {cmd.status === 'pending' && <div className="text-muted-foreground/50 text-xs italic">[\u7b49\u5f85\u5206\u53d1...]</div>}
                     {cmd.status !== 'pending' && cmd.status !== 'running' && (
                       <div className={`whitespace-pre-wrap p-3 rounded-md border ${cmd.exitCode === 0 ? 'border-primary/20 bg-primary/5 text-gray-300' : 'border-destructive/30 bg-destructive/10 text-red-400'}`}>
-                        {cmd.output || <span className="italic opacity-50">No output</span>}
+                        {cmd.output || <span className="italic opacity-50">\u65e0\u8f93\u51fa</span>}
                         <div className="mt-2 text-xs opacity-50 flex items-center justify-between border-t border-border/50 pt-2">
-                          <span>Exit code: {cmd.exitCode ?? 'none'}</span>
+                          <span>\u9000\u51fa\u7801: {cmd.exitCode ?? '\u65e0'}</span>
                           <span>{cmd.completedAt ? formatDistanceToNow(new Date(cmd.completedAt), { addSuffix: true }) : ''}</span>
                         </div>
                       </div>
@@ -159,7 +159,7 @@ export default function AgentDetail() {
                   <Input
                     value={cmdInput}
                     onChange={(e) => setCmdInput(e.target.value)}
-                    placeholder="Enter command..."
+                    placeholder="\u8f93\u5165\u547d\u4ee4..."
                     className="pl-8 font-mono bg-black border-primary/30 focus-visible:ring-primary/50 text-primary placeholder:text-primary/30 rounded-none h-10"
                     disabled={agent.status === 'offline' || executeCommand.isPending}
                     autoComplete="off"
@@ -169,11 +169,11 @@ export default function AgentDetail() {
                     disabled={agent.status === 'offline' || !cmdInput.trim() || executeCommand.isPending}
                     className="rounded-none font-mono tracking-widest h-10"
                   >
-                    RUN
+                    \u6267\u884c
                   </Button>
                 </form>
                 {agent.status === 'offline' && (
-                  <p className="text-xs text-destructive mt-2 text-center animate-pulse">Terminal disabled: Agent is offline</p>
+                  <p className="text-xs text-destructive mt-2 text-center animate-pulse">\u7ec8\u7aef\u5df2\u7981\u7528\uff1a\u7ec8\u7aef\u5df2\u79bb\u7ebf</p>
                 )}
               </div>
             </CardContent>

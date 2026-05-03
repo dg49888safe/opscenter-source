@@ -20,10 +20,10 @@ export function Layout({ children }: LayoutProps) {
   const [location] = useLocation();
 
   const navItems = [
-    { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
-    { href: "/agents", label: "Agents", icon: Server },
-    { href: "/commands", label: "Commands", icon: Terminal },
-    { href: "/audit-logs", label: "Audit Logs", icon: History },
+    { href: "/dashboard", label: "\u6982\u89c8", icon: LayoutDashboard },
+    { href: "/agents", label: "\u7ec8\u7aef\u7ba1\u7406", icon: Server },
+    { href: "/commands", label: "\u547d\u4ee4\u5386\u53f2", icon: Terminal },
+    { href: "/audit-logs", label: "\u5ba1\u8ba1\u65e5\u5fd7", icon: History },
   ];
 
   return (
@@ -32,7 +32,7 @@ export function Layout({ children }: LayoutProps) {
       <aside className="w-64 border-r border-border bg-sidebar flex flex-col">
         <div className="h-16 flex items-center px-6 border-b border-border">
           <Activity className="w-6 h-6 text-primary mr-3" />
-          <span className="font-mono font-bold tracking-wider text-primary">OPS_CENTER</span>
+          <span className="font-mono font-bold tracking-wider text-primary">\u8fd0\u7ef4\u4e2d\u5fc3</span>
         </div>
         
         <div className="flex-1 overflow-y-auto py-4 px-3 space-y-1">
@@ -50,7 +50,7 @@ export function Layout({ children }: LayoutProps) {
         <div className="p-4 border-t border-border">
           <div className="flex items-center justify-between">
             <div className="flex flex-col">
-              <span className="text-xs text-muted-foreground uppercase tracking-wider font-mono">OPERATOR</span>
+              <span className="text-xs text-muted-foreground uppercase tracking-wider font-mono">\u5f53\u524d\u7528\u6237</span>
               <span className="text-sm font-medium">{user?.username}</span>
             </div>
             <Button variant="ghost" size="icon" onClick={() => logout()} title="Logout" className="text-muted-foreground hover:text-destructive">
@@ -66,7 +66,7 @@ export function Layout({ children }: LayoutProps) {
           <div className="flex items-center text-sm font-mono text-muted-foreground">
             <span className="text-primary">~</span>
             <ChevronRight className="w-4 h-4 mx-1" />
-            <span>{location.split('/').filter(Boolean).join(' / ') || 'home'}</span>
+            <span>{location.split('/').filter(Boolean).join(' / ').replace('dashboard', '\u4eea\u8868\u76d8').replace('agents', '\u7ec8\u7aef\u7ba1\u7406').replace('commands', '\u547d\u4ee4\u5386\u53f2').replace('audit-logs', '\u5ba1\u8ba1\u65e5\u5fd7').replace('login', '\u767b\u5f55') || '\u9996\u9875'}</span>
           </div>
         </header>
         <div className="flex-1 overflow-auto p-6">

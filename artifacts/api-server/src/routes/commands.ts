@@ -24,8 +24,8 @@ router.get("/", requireAuth, async (req, res) => {
       completedAt: c.completedAt?.toISOString() ?? undefined,
     })));
   } catch (err) {
-    req.log.error({ err }, "Failed to list commands");
-    res.status(500).json({ error: "Internal server error" });
+    req.log.error({ err }, "\u5217\u8868\u547d\u4ee4\u5931\u8d25");
+    res.status(500).json({ error: "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef" });
   }
 });
 

@@ -22,8 +22,8 @@ router.get("/", requireAuth, async (req, res) => {
       createdAt: a.createdAt.toISOString(),
     })));
   } catch (err) {
-    req.log.error({ err }, "Failed to list agents");
-    res.status(500).json({ error: "Internal server error" });
+    req.log.error({ err }, "\u5217\u8868\u7ec8\u7aef\u5931\u8d25");
+    res.status(500).json({ error: "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef" });
   }
 });
 
@@ -41,8 +41,8 @@ router.get("/stats", requireAuth, async (req, res) => {
 
     res.json({ total, online, offline, commandsToday: Number(commandsToday) });
   } catch (err) {
-    req.log.error({ err }, "Failed to get stats");
-    res.status(500).json({ error: "Internal server error" });
+    req.log.error({ err }, "\u83b7\u53d6\u7edf\u8ba1\u5931\u8d25");
+    res.status(500).json({ error: "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef" });
   }
 });
 
@@ -67,8 +67,8 @@ router.get("/:agentId", requireAuth, async (req, res) => {
       createdAt: agent.createdAt.toISOString(),
     });
   } catch (err) {
-    req.log.error({ err }, "Failed to get agent");
-    res.status(500).json({ error: "Internal server error" });
+    req.log.error({ err }, "\u83b7\u53d6\u7ec8\u7aef\u5931\u8d25");
+    res.status(500).json({ error: "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef" });
   }
 });
 
@@ -92,8 +92,8 @@ router.delete("/:agentId", requireAuth, async (req, res) => {
 
     res.json({ success: true });
   } catch (err) {
-    req.log.error({ err }, "Failed to delete agent");
-    res.status(500).json({ error: "Internal server error" });
+    req.log.error({ err }, "\u5220\u9664\u7ec8\u7aef\u5931\u8d25");
+    res.status(500).json({ error: "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef" });
   }
 });
 
@@ -103,14 +103,14 @@ router.post("/:agentId/execute", requireAuth, async (req, res) => {
     if (isNaN(id)) { res.status(400).json({ error: "Invalid agent ID" }); return; }
 
     const { command, timeout } = req.body as { command: string; timeout?: number };
-    if (!command) { res.status(400).json({ error: "Command required" }); return; }
+    if (!command) { res.status(400).json({ error: "\u9700\u8981\u547d\u4ee4" }); return; }
 
     const agents = await db.select().from(agentsTable).where(eq(agentsTable.id, id)).limit(1);
     const agent = agents[0];
     if (!agent) { res.status(404).json({ error: "Agent not found" }); return; }
 
     if (!isAgentConnected(agent.agentKey)) {
-      res.status(404).json({ error: "Agent is offline" });
+      res.status(404).json({ error: "\u7ec8\u7aef\u5df2\u79bb\u7ebf" });
       return;
     }
 
@@ -145,8 +145,8 @@ router.post("/:agentId/execute", requireAuth, async (req, res) => {
       createdAt: cmd.createdAt.toISOString(),
     });
   } catch (err) {
-    req.log.error({ err }, "Failed to execute command");
-    res.status(500).json({ error: "Internal server error" });
+    req.log.error({ err }, "\u6267\u884c\u547d\u4ee4\u5931\u8d25");
+    res.status(500).json({ error: "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef" });
   }
 });
 
@@ -172,8 +172,8 @@ router.get("/:agentId/commands", requireAuth, async (req, res) => {
       completedAt: c.completedAt?.toISOString() ?? undefined,
     })));
   } catch (err) {
-    req.log.error({ err }, "Failed to list agent commands");
-    res.status(500).json({ error: "Internal server error" });
+    req.log.error({ err }, "\u5217\u8868\u547d\u4ee4\u5931\u8d25");
+    res.status(500).json({ error: "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef" });
   }
 });
 

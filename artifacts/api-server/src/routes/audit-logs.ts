@@ -21,8 +21,8 @@ router.get("/", requireAuth, async (req, res) => {
       createdAt: l.createdAt.toISOString(),
     })));
   } catch (err) {
-    req.log.error({ err }, "Failed to list audit logs");
-    res.status(500).json({ error: "Internal server error" });
+    req.log.error({ err }, "\u5217\u8868\u5ba1\u8ba1\u65e5\u5fd7\u5931\u8d25");
+    res.status(500).json({ error: "\u670d\u52a1\u5668\u5185\u90e8\u9519\u8bef" });
   }
 });
 

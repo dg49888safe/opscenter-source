@@ -44,8 +44,8 @@ function loadConfig(): Config {
   }
 
   if (!serverUrl || !agentKey) {
-    console.error("错误: 请提供 --server 和 --key 参数，或配置文件 ~/.ops-agent.json");
-    console.error("示例: ops-agent.exe --server wss://your-vps.com --key YOUR_KEY");
+    console.error("[错误] 请提供 --server 和 --key 参数，或配置文件 ~/.ops-agent.json");
+    console.error("[示例] ops-agent.exe --server wss://your-vps.com --key YOUR_KEY");
     process.exit(1);
   }
 

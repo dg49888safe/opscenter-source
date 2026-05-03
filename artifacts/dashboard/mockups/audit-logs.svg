@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800">
+  <rect width="100%" height="100%" fill="#071227" />
+  <text x="40" y="40" fill="#e6eef8" font-size="18">Audit Logs</text>
+  <rect x="40" y="70" width="1120" height="650" rx="8" fill="#06101a" stroke="#142233" />
+  <text x="60" y="110" fill="#94a3b8">Recent audit events</text>
+
+  <text x="60" y="150" fill="#e6eef8">[2026-05-03 10:12] Admin "alice" executed "restart" on agent-03</text>
+  <text x="60" y="180" fill="#bfcfe6">[2026-05-03 09:50] Admin "bob" logged in</text>
+  <text x="60" y="210" fill="#bfcfe6">[2026-05-02 18:23] Agent agent-07 unregistered</text>
+
+  <rect x="60" y="560" width="200" height="36" rx="6" fill="#0b2233" />
+  <text x="80" y="586" fill="#93c5fd">Export</text>
+</svg>

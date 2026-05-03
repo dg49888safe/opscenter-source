@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800">
+  <rect width="100%" height="100%" fill="#0f172a" />
+  <rect x="0" y="0" width="240" height="800" fill="#0b1220" />
+  <text x="20" y="40" fill="#fff" font-size="20" font-family="Arial">OpsCenter</text>
+  <g fill="#cbd5e1" font-family="Arial">
+    <text x="20" y="90" font-size="14">Dashboard</text>
+    <text x="20" y="120" font-size="14">Agents</text>
+    <text x="20" y="150" font-size="14">Commands</text>
+    <text x="20" y="180" font-size="14">Audit Logs</text>
+  </g>
+  <text x="280" y="40" fill="#e2e8f0" font-size="18" font-family="Arial">Overview</text>
+  <rect x="280" y="70" width="260" height="120" rx="8" fill="#0b1320" stroke="#233044" />
+  <text x="300" y="100" fill="#93c5fd" font-size="20">Online Agents</text>
+  <text x="300" y="130" fill="#fff" font-size="36">42</text>
+
+  <rect x="560" y="70" width="260" height="120" rx="8" fill="#0b1320" stroke="#233044" />
+  <text x="580" y="100" fill="#fbcfe8" font-size="20">Commands Today</text>
+  <text x="580" y="130" fill="#fff" font-size="36">128</text>
+
+  <rect x="840" y="70" width="320" height="120" rx="8" fill="#0b1320" stroke="#233044" />
+  <text x="860" y="100" fill="#fef3c7" font-size="20">Audit Events</text>
+  <text x="860" y="130" fill="#fff" font-size="36">512</text>
+
+  <rect x="280" y="210" width="880" height="480" rx="10" fill="#071127" stroke="#1b2938" />
+  <text x="300" y="240" fill="#94a3b8" font-size="14">Recent activity</text>
+  <line x1="300" y1="260" x2="1140" y2="260" stroke="#1f2f3f" />
+  <text x="300" y="290" fill="#fff" font-size="13">[2026-05-03 10:12] Command "uptime" executed on agent-12 — completed</text>
+  <text x="300" y="320" fill="#bfcfe6" font-size="13">[2026-05-03 09:50] Admin logged in</text>
+  <text x="300" y="350" fill="#bfcfe6" font-size="13">[2026-05-02 18:23] Agent agent-07 registered</text>
+</svg>

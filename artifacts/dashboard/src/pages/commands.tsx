@@ -19,11 +19,11 @@ export default function Commands() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <h1 className="text-3xl font-bold tracking-tight">Global Command Feed</h1>
+        <h1 className="text-3xl font-bold tracking-tight">\u547d\u4ee4\u5386\u53f2</h1>
         <div className="relative w-full sm:w-72">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search commands or agents..."
+            placeholder="\u641c\u7d22\u547d\u4ee4\u6216\u7ec8\u7aef..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="pl-9 font-mono bg-background/50"
@@ -35,11 +35,11 @@ export default function Commands() {
         <CardContent className="p-0">
           {isLoading ? (
             <div className="py-12 text-center text-muted-foreground font-mono animate-pulse">
-              LOADING_COMMAND_HISTORY...
+              \u6b63\u5728\u52a0\u8f7d\u547d\u4ee4\u5386\u53f2...
             </div>
           ) : filteredCommands.length === 0 ? (
             <div className="py-12 text-center text-muted-foreground font-mono">
-              NO_COMMANDS_FOUND
+              \u672a\u627e\u5230\u547d\u4ee4
             </div>
           ) : (
             <div className="divide-y divide-border/50">
@@ -58,7 +58,7 @@ export default function Commands() {
                       <span className="truncate">{cmd.command}</span>
                     </div>
                     {cmd.status === 'completed' && cmd.exitCode !== undefined && (
-                      <span className="text-xs font-mono text-muted-foreground">Exit Code: {cmd.exitCode}</span>
+                      <span className="text-xs font-mono text-muted-foreground">\u9000\u51fa\u7801: {cmd.exitCode}</span>
                     )}
                   </div>
                   
@@ -69,7 +69,7 @@ export default function Commands() {
                       cmd.status === 'failed' || cmd.status === 'timeout' ? 'border-destructive/30 text-destructive font-mono text-[10px]' :
                       'border-border text-muted-foreground font-mono text-[10px]'
                     }>
-                      {cmd.status.toUpperCase()}
+                      {cmd.status === 'completed' ? '\u5df2\u5b8c\u6210' : cmd.status === 'running' ? '\u6267\u884c\u4e2d' : cmd.status === 'failed' ? '\u5931\u8d25' : cmd.status === 'pending' ? '\u7b49\u5f85\u4e2d' : cmd.status.toUpperCase()}
                     </Badge>
                   </div>
                 </div>

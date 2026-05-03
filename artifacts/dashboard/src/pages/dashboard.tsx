@@ -11,16 +11,16 @@ export default function Dashboard() {
   const { data: commands } = useListAllCommands({ query: { refetchInterval: 5000 } });
 
   const statCards = [
-    { title: "Total Agents", value: stats?.total ?? "-", icon: Server, color: "text-blue-500" },
-    { title: "Online", value: stats?.online ?? "-", icon: Activity, color: "text-green-500" },
-    { title: "Offline", value: stats?.offline ?? "-", icon: AlertCircle, color: "text-muted-foreground" },
-    { title: "Commands Today", value: stats?.commandsToday ?? "-", icon: TerminalSquare, color: "text-primary" },
+    { title: "\u7ec8\u7aef\u603b\u6570", value: stats?.total ?? "-", icon: Server, color: "text-blue-500" },
+    { title: "\u5728\u7ebf\u7ec8\u7aef", value: stats?.online ?? "-", icon: Activity, color: "text-green-500" },
+    { title: "\u79bb\u7ebf\u7ec8\u7aef", value: stats?.offline ?? "-", icon: AlertCircle, color: "text-muted-foreground" },
+    { title: "\u4eca\u65e5\u547d\u4ee4", value: stats?.commandsToday ?? "-", icon: TerminalSquare, color: "text-primary" },
   ];
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold tracking-tight">Overview</h1>
+        <h1 className="text-3xl font-bold tracking-tight">\u4eea\u8868\u76d8\u6982\u89c8</h1>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -43,8 +43,8 @@ export default function Dashboard() {
         <Card className="bg-card/50 backdrop-blur border-border/50 col-span-1">
           <CardHeader>
             <CardTitle className="font-mono text-sm tracking-wider flex items-center justify-between">
-              ACTIVE_AGENTS
-              <Badge variant="outline" className="text-primary border-primary/20">LIVE</Badge>
+              \u6d3b\u8dc3\u7ec8\u7aef
+              <Badge variant="outline" className="text-primary border-primary/20">\u5b9e\u65f6</Badge>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -74,14 +74,14 @@ export default function Dashboard() {
                   </div>
                 </div>
               ))}
-              {!agents?.length && <div className="text-sm text-muted-foreground py-4 text-center">No agents registered</div>}
+              {!agents?.length && <div className="text-sm text-muted-foreground py-4 text-center">\u6682\u65e0\u6ce8\u518c\u7ec8\u7aef</div>}
             </div>
           </CardContent>
         </Card>
 
         <Card className="bg-card/50 backdrop-blur border-border/50 col-span-1">
           <CardHeader>
-            <CardTitle className="font-mono text-sm tracking-wider">RECENT_COMMANDS</CardTitle>
+            <CardTitle className="font-mono text-sm tracking-wider">\u6700\u8fd1\u547d\u4ee4</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -95,7 +95,7 @@ export default function Dashboard() {
                       cmd.status === 'failed' ? 'text-destructive border-destructive/20' :
                       'text-muted-foreground border-border'
                     }>
-                      {cmd.status}
+                      {cmd.status === 'completed' ? '\u5df2\u5b8c\u6210' : cmd.status === 'running' ? '\u6267\u884c\u4e2d' : cmd.status === 'failed' ? '\u5931\u8d25' : cmd.status === 'pending' ? '\u7b49\u5f85\u4e2d' : cmd.status.toUpperCase()}
                     </Badge>
                   </div>
                   <div className="flex justify-between text-xs text-muted-foreground">
@@ -104,7 +104,7 @@ export default function Dashboard() {
                   </div>
                 </div>
               ))}
-              {!commands?.length && <div className="text-sm text-muted-foreground py-4 text-center">No recent commands</div>}
+              {!commands?.length && <div className="text-sm text-muted-foreground py-4 text-center">\u6682\u65e0\u8fd1\u671f\u547d\u4ee4</div>}
             </div>
           </CardContent>
         </Card>
